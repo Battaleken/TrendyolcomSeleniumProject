@@ -13,7 +13,7 @@ public class WebDriverHelper {
 
     public WebDriverHelper(WebDriver webDriver) {
         this.webDriver = webDriver;
-    }
+    }git remote set-url origin "https://github-username@github.com/github-username/github-repository-name.git"
 
     public void click(By byElement, int timeOut) {
         WebDriverWait wait = new WebDriverWait(webDriver, timeOut);
