@@ -19,7 +19,6 @@ public class BaseTest {
     @BeforeMethod
     public void startUp() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments();
         options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
 
@@ -33,8 +32,8 @@ public class BaseTest {
         webDriver.get("https://www.trendyol.com/");
         return new BasePage(webDriver);
     }
-//    @AfterMethod
-//    public void quitDriver() {
-//        webDriver.quit();
-//    }
+    @AfterMethod
+    public void quitDriver() {
+        webDriver.quit();
+    }
 }

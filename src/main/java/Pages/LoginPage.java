@@ -3,7 +3,7 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static Services.GetEmailAcc.takeEmail;
+import static Services.GetEmailAccount.takeEmail;
 
 public class LoginPage extends BasePage {
 

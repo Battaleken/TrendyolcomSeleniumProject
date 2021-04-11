@@ -1,13 +1,13 @@
 package Pages;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+
 public class HomePage extends BasePage {
-    By electronicTabBy = By.id("sub-nav-5");
+    By electronicTabBy = By.cssSelector("a[href*=\"/butik/liste/elektronik\"]");
+    By kisiselBakimTabBy = By.cssSelector("a[href*=\"/elektronik-kisisel-bakim-x-c103109\"]");
     By closeDiscountPopupBy = By.className("modal-close");
-    By tvGoruntuSesTabBy = By.cssSelector("a[href*=\"/tv-goruntu-ses-sistemleri-x-c104035\"]");
-    private By electronicFieldBy = By.cssSelector("a[href='/butik/liste/elektronik']");
+
 
     public HomePage(WebDriver webDriver) { super(webDriver);}
 
@@ -16,20 +16,17 @@ public class HomePage extends BasePage {
         click(closeDiscountPopupBy,4);
     }
 
+    public ItemPage selectSubCategoryAndCheck() throws InterruptedException {
 
-    public void hoverElectronicPage() {
+        moveToElement(electronicTabBy);
+        click(kisiselBakimTabBy,4);
 
-        hoverElement(electronicFieldBy, 4);
-
+    return new ItemPage(webDriver);
     }
 
-    public  void clickTvGoruntuSes(){
-        click(tvGoruntuSesTabBy, 4);
+    public void scrollThePage() throws InterruptedException {
+        scrollPage();
     }
 
 
-    public void clickElectronicPage(){
-
-        click(electronicFieldBy,4);
-    }
 }

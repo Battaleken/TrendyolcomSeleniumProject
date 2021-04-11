@@ -1,6 +1,7 @@
 package Services;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -13,7 +14,7 @@ public class WebDriverHelper {
 
     public WebDriverHelper(WebDriver webDriver) {
         this.webDriver = webDriver;
-    }git remote set-url origin "https://github-username@github.com/github-username/github-repository-name.git"
+    }
 
     public void click(By byElement, int timeOut) {
         WebDriverWait wait = new WebDriverWait(webDriver, timeOut);
@@ -29,15 +30,20 @@ public class WebDriverHelper {
         WebDriverWait wait = new WebDriverWait(webDriver, 10);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(byElement)).getText();
     }
-    public void hoverElement(By selectorOfItem, int timeOut){
-
-        WebDriverWait wait = new WebDriverWait(webDriver, timeOut);
-        Actions actions = new Actions(webDriver);
-
-        WebElement hoverElement = webDriver.findElement(By.cssSelector(String.valueOf(selectorOfItem)));
-        actions.moveToElement(hoverElement).perform();
 
 
+
+    public void moveToElement(By byElement) {
+
+        WebElement element = webDriver.findElement(byElement);
+        String strJavaScript = "var element = arguments[0]; var mouseEventObj = document.createEvent('MouseEvents'); mouseEventObj.initEvent( 'mouseover', true, true ); element.dispatchEvent(mouseEventObj);";
+        ((JavascriptExecutor) webDriver).executeScript(strJavaScript, element);
+
+    }
+
+    public void scrollPage()  {
+
+        ((JavascriptExecutor) webDriver).executeScript("window.scrollTo(0,10000)");
 
     }
 }
